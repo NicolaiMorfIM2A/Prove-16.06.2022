@@ -27,7 +27,6 @@ $sql = "SELECT Navn, Mobil, Jobb, Epost, Stilling, Avdeling, Bilde FROM prove.an
 $result = $kobling->query($sql);
 
 if ($result->num_rows > 0) {
-    // output data of each row
     while($row = $result->fetch_assoc()) {
         $navn = $row["Navn"];
         $mobil = $row["Mobil"];
