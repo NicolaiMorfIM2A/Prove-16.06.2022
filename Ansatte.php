@@ -6,18 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ansatte</title>
 
-    <style>
-        #rows {
-            display: flex;
-            flex-direction: row;
-        }
 
-        #infoscreen {
-            display: flex;
-            flex-direction: column;
-        }
-
-    </style>
 
 </head>
 <body>
@@ -34,7 +23,7 @@ if ($kobling->connect_error) {
   die("Connection failed: " . $kobling->connect_error);
 }
 
-$sql = "SELECT Navn, Mobil, Jobb, Epost, Stilling, Avdeling FROM prove.ansatte";
+$sql = "SELECT Navn, Mobil, Jobb, Epost, Stilling, Avdeling, Bilde FROM prove.ansatte";
 $result = $kobling->query($sql);
 
 if ($result->num_rows > 0) {
@@ -46,66 +35,17 @@ if ($result->num_rows > 0) {
         $Epost = $row["Epost"];
         $stilling = $row["Stilling"];
         $avdeling = $row["Avdeling"];
+        $bilde = $row["Bilde"];
 
 echo "<table>";
   echo "<tr>";
-   echo "<td><img src='heskestad.jpg' alt=''></td>";
-    echo "<td><img src='bøyum.jpg' alt=''></td>";
-    echo "<td><img src='wold.jpg' alt=''></td>";
-    echo "<td><img src='strand.jpg' alt=''></td>";
-    echo "<td><img src='gudmestad.jpg' alt=''></td>";
-    echo "<td><img src='vollan.jpg' alt=''></td>";
-    echo "<td><img src='bye.jpg' alt=''></td>";
-    echo "<td><img src='bendiksen.jpg' alt=''></td>";
-    echo "<td><img src='østlie.jpg' alt=''></td>";
-  echo "</tr>";
-  echo "<tr>";
-    echo "<td>$navn</td>";
-    echo "<td>$mobil</td>";
-    echo "<td>$jobb</td>";
-    echo "<td>$Epost</td>";
-    echo "<td>$stilling</td>";
-    echo "<td>$avdeling</td>";
-  echo "</tr>";
-  echo "<tr>";
-    echo "<td>$navn</td>";
-    echo "<td>$mobil</td>";
-    echo "<td>$jobb</td>";
-    echo "<td>$Epost</td>";
-    echo "<td>$stilling</td>";
-    echo "<td>$avdeling</td>";
-  echo "</tr>";
-  echo "<tr>";
-    echo "<td>$navn</td>";
-    echo "<td>$mobil</td>";
-    echo "<td>$jobb</td>";
-    echo "<td>$Epost</td>";
-    echo "<td>$stilling</td>";
-    echo "<td>$avdeling</td>";
-  echo "</tr>";
-  echo "<tr>";
-  echo "<td>$navn</td>";
-  echo "<td>$mobil</td>";
-  echo "<td>$jobb</td>";
-  echo "<td>$Epost</td>";
-  echo "<td>$stilling</td>";
-  echo "<td>$avdeling</td>";
-  echo "</tr>";
-  echo "<tr>";
-  echo "<td>$navn</td>";
-  echo "<td>$mobil</td>";
-  echo "<td>$jobb</td>";
-  echo "<td>$Epost</td>";
-  echo "<td>$stilling</td>";
-  echo "<td>$avdeling</td>";
-  echo "</tr>";
-  echo "<tr>";
-  echo "<td>$navn</td>";
-  echo "<td>$mobil</td>";
-  echo "<td>$jobb</td>";
-  echo "<td>$Epost</td>";
-  echo "<td>$stilling</td>";
-  echo "<td>$avdeling</td>";
+    echo "<td><img src='$bilde' alt=''> </td>";
+    echo "<td> $navn. </td>";
+    echo "<td> Mobil: $mobil  </td>";
+    echo "<td> Jobbtlf: $jobb  </td>";
+    echo "<td> E-post: $Epost  </td>";
+    echo "<td> Stilling: $stilling  </td>";
+    echo "<td> Avdeling: $avdeling  </td>";
   echo "</tr>";
 echo "</table>";
         }
